@@ -174,3 +174,49 @@ index page before refractor
 
   <br>
   <%= link_to 'New Movie', new_movie_path %>
+
+  <td> means table cell
+
+  movies/show before
+
+  <h1>Movies#show</h1>
+<%= image_tag @movie.image.url(:medium) %>
+   
+            
+           
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+            
+            
+<p>
+  <strong>Description:</strong>
+  <%= @movie.description %>
+</p>
+            
+            
+<p>
+  <strong>Movie length:</strong>
+  <%= @movie.movie_length %>
+</p>
+            
+            
+<p>
+  <strong>Director:</strong>
+  <%= @movie.director %>
+</p>
+            
+            
+<p>
+  <strong>Rating:</strong>
+  <%= @movie.rating %>
+</p>
+            
+             
+     
+        
+     
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %> |
+<%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
