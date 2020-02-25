@@ -140,3 +140,37 @@ For pkg-config to find sqlite you may need to set:
 Assests folder...stylesheets...application.css.. needs to be changed to application.css.scss so it can use bootstrap-sass gem
 
 Assests folder..javascripts...application.jc add //= require bootstrap-sprockets for the bootstrap-sass gem as well
+
+index page before refractor
+
+<h1> Listing all Movies (index page) </h1>
+<table>
+<thead>
+<tr>
+<th> Title </th>
+<th> Description </th>
+<th> Movie Length </th>
+<th> Director</th>
+<th> Rating </th>
+<th colspan="3"> </th>
+</tr>
+</thead>
+<tbody>
+  <% @movies.each do |movie| %>
+  <tr>
+  <td><%= image_tag movie.image.url(:medium)%> </td>
+  <td><%= movie.title %></td>
+  <td><%= movie.description %></td>
+  <td><%= movie.movie_length %></td>
+  <td><%= movie.director %></td>
+  <td><%= movie.rating %></td>
+  <td><%= link_to "Show ", movie %></td>
+  <td><%= link_to "Edit", edit_movie_path(movie) %></td>
+  <td><%= link_to "Destroy", movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+
+  <br>
+  <%= link_to 'New Movie', new_movie_path %>
