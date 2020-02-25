@@ -125,3 +125,18 @@ For compilers to find sqlite you may need to set:
 
 For pkg-config to find sqlite you may need to set:
   export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+
+
+
+ <% @movies.each do |movie| %>
+
+      <li><%= link_to "Show #{movie.title}", movie_path(movie) %></li>
+  <% end %>
+  </ul>
+
+<%= link_to "create a new movie", new_movie_path(@movie) %>
+
+
+Assests folder...stylesheets...application.css.. needs to be changed to application.css.scss so it can use bootstrap-sass gem
+
+Assests folder..javascripts...application.jc add //= require bootstrap-sprockets for the bootstrap-sass gem as well

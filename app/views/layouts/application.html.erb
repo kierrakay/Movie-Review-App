@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsProject30</title>
+    <title>Movie Review</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-    <div class="container"  role="main">
-    <% flash.each do |type, msg| %>
-  <div>
+   <body>
+
+
+<%= render 'layouts/header' %>
+    <% flash.each do |name, msg| %>
+  <%= content_tag(:div, msg, class: "alert alert-info") %>
     <%= msg %> 
-  </div>
+ 
 <% end %>
   <%# <p class="notice"><%=notice 
   < /p > %>
   <%# <p class="alert"><%= alert %>
-   <%# < /p > %>
+   <%# < /p > %> 
+   <%# devise methods above  %>
 
-  <body>
+ 
     <%= yield %>
   </body>
 </html>
