@@ -15,6 +15,8 @@ class MoviesController < ApplicationController
   def create
 
     @movie = current_user.movies.build(movie_params)
+
+
     if @movie.save
       # if @movie.valid? wont work here
       redirect_to movie_path(@movie), notice: 'Movie was successfully created.'
@@ -26,7 +28,7 @@ class MoviesController < ApplicationController
  
 
   def show
-    
+    @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
   end
 
   def edit
@@ -36,10 +38,10 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
-        format.json { render :show, status: :ok, location: @movie }
+        # format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
+        # format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,6 +51,8 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+
+
   private 
   def set_movie
     @movie = Movie.find(params[:id])
@@ -57,6 +61,7 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
+    # do i need to add user_id here so itll stay?
     
   end
 

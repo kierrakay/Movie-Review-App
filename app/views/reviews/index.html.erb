@@ -1,8 +1,22 @@
-<ul>
-<% @reviews.each do |review| %>
-<li> <%= link_to "#{review.comment}", review_path(review) %></li>
-<% end %>
+<h1> Listing all reviews (index page) </h1>
+<table>
+<thead>
+<tr>
+<th> Rating </th>
+<th> Comment</th>
+<th colspan="3"> </th>
+</tr>
+</thead>
+<tbody>
+  <% @reviews.each do |review| %>
+  <tr>
+  
+  <%# <td><%= review.rating</td> %> 
 
-  </ul>
-
-  <%= link_to 'Create A New Review', new_review_path(@review) %>
+  <%# <td><%= review.comment %> 
+  <td><%= review.rating %></td>
+  <td><%= link_to "#{review.comment}", review_path(review) %></td>
+  <% end %>
+  </tr>
+  </tbody>
+  </table>

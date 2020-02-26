@@ -28,10 +28,27 @@
               </tr>
             </tbody>
           </table>
+          <%= link_to "Write A Review", new_movie_review_path(@movie) %>
         </div>
       </div>
-     
+      <div class="col-md-7 col-md-offset-1">
+      <h1 class="review_title"><%= @movie.title %></h1>
+      <p><%= @movie.description %></p>
+
+         <% if @reviews.blank? %>
+          <h3>No reviews just yet, would you like to add the first!</h3>
+          <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-danger" %>
+        <% else %>
+          <% @reviews.each do |review| %>
+            <div class="reviews">
+            <p><%= review.rating %></p>
+            <p><%= review.comment %></p>
+           
+             
+             <%# <p><%= review.user.username%>
       </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
 

@@ -220,3 +220,46 @@ index page before refractor
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %> |
 <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+
+
+once index and show page work delete the views. we only want to create edit and destroy reviews and show them on the movie show page
+
+reviews index page
+<h1> Listing all reviews (index page) </h1>
+<table>
+<thead>
+<tr>
+<th> Rating </th>
+<th> Comment</th>
+<th colspan="3"> </th>
+</tr>
+</thead>
+<tbody>
+  <% @reviews.each do |review| %>
+  <tr>
+  
+  <%# <td><%= review.rating</td> %> 
+
+  <%# <td><%= review.comment %> 
+  <td><%= review.rating %></td>
+  <td><%= link_to "#{review.comment}", review_path(review) %></td>
+  <% end %>
+  </tr>
+  </tbody>
+  </table>
+
+  reviews show page
+  <h1>Reviews#show</h1>
+
+<strong>Rating:</strong>
+<%= @review.rating %><br>
+<strong>Comment:</strong>
+<%= @review.comment %><br>
+<strong>User:</strong>
+<%= @review.user.username %>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'See All Reviews', reviews_path %> |
+<%= link_to "Delete", review_path(@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+
+  <%= link_to 'Create A New Review', new_review_path(@review) %>
