@@ -2,7 +2,13 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   
 
-
+def search
+  if params[:search].present?
+    @movies = Movie.search(params[:search])
+  else
+    @movies = Movie.all
+  end
+end
 
   def index
     @movies = Movie.all
@@ -32,6 +38,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
+   
   end
 
   def update
