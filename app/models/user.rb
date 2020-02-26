@@ -8,7 +8,9 @@ class User < ApplicationRecord
   
   # belongs_to :movies
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  #deletes reviews when user cancels account
+
   has_many :movies
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

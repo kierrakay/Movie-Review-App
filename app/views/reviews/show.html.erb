@@ -7,8 +7,8 @@
 <strong>User:</strong>
 <%= @review.user.username %>
 
-<%= link_to 'Edit', edit_movie_review_path(@movie) %> |
+<%= link_to 'Edit', edit_movie_review_path(@review) %> |
 <%= link_to 'See All Reviews', reviews_path %> |
-<%= link_to "Delete", review_path(@movie), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+<%= link_to "Delete", review_path(@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
 
   <%= link_to 'Create A New Review', new_movie_review_path(@review) %>

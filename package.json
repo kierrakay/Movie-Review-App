@@ -1,5 +1,7 @@
 {
   "name": "rails-project3_0",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "raty-js": "^2.9.0"
+  }
 }
