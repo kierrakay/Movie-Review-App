@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
     @review.movie_id = @movie.id
     if @review.save
       redirect_to @movie
-      # redirect_to reviews_path(@review)
 
       # this @movie works cause we set the movie with the set_movie method
     else
@@ -28,6 +27,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+
   
   end
 
@@ -35,20 +35,17 @@ class ReviewsController < ApplicationController
   if @review.user_id == current_user.id
     render 'edit'
   else 
-  #  redirect_to review_path(@review)
     redirect_to movie_path(@movie)
   end
 end
 
   def update
     @review.update(review_params)
-    # redirect_to reviews_path
     redirect_to @movie
   end
 
   def destroy
     @review.destroy
-    # redirect_to reviews_path
     redirect_to @movie
   end
 

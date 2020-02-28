@@ -27,9 +27,7 @@ end
 
 
     if @movie.save
-      # if @movie.valid? wont work here
-      redirect_to movie_path(@movie)
-      # , notice: 'Movie was successfully created.'
+      redirect_to movie_path(@movie), notice: 'Movie was successfully created.'
       
     else
       render :new
@@ -45,7 +43,6 @@ end
     if @movie.user_id == current_user.id
       render 'edit'
     else 
-      # redirect_to movie_reviews_path(@movie)
       redirect_to movie_path(@movie)
     end
 
