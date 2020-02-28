@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     render 'edit'
   else 
   #  redirect_to review_path(@review)
-    redirect_to movie_reviews_path(@movie)
+    redirect_to movie_path(@movie)
   end
 end
 
