@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', movie_path(@movie)%>
+<%= link_to "Delete", movie_review_path(@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
 <%# goes back to the particular movie instance we were at %>

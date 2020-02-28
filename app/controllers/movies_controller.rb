@@ -1,5 +1,8 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
+
   
 
 def search
@@ -25,7 +28,8 @@ end
 
     if @movie.save
       # if @movie.valid? wont work here
-      redirect_to movie_path(@movie), notice: 'Movie was successfully created.'
+      redirect_to movie_path(@movie)
+      # , notice: 'Movie was successfully created.'
       
     else
       render :new
@@ -38,17 +42,22 @@ end
   end
 
   def edit
-   
+    if @movie.user_id == current_user.id
+      render 'edit'
+    else 
+      # redirect_to movie_reviews_path(@movie)
+      redirect_to movie_path(@movie)
+    end
+
   end
 
   def update
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit }
-        # format.json { render json: @movie.errors, status: :unprocessable_entity }
+     
       end
     end
   end
@@ -63,8 +72,12 @@ end
   private 
   def set_movie
     @movie = Movie.find(params[:id])
-  
+    # @movie = Movie.find_by(params[:id])  // find the post
+    # unless current_user?(@movie.user)
+    #   redirect_to user_path(current_user)
+    # end
   end
+ 
 
   def movie_params
     params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image, user: current_user)

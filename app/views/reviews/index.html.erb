@@ -15,7 +15,8 @@
 
   <%# <td><%= review.comment %> 
   <td><%= review.rating %></td>
-  <td><%= link_to "#{review.comment}", review_path(review) %></td>
+  <%# <td><%= link_to "#{review.comment}", review_path(review) %>
+  <%= link_to "#{review.comment}", movie_review_path(review.movie, review) %>
   <% end %>
   </tr>
   </tbody>

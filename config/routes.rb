@@ -13,5 +13,7 @@ end
 resources :reviews
 
 root 'movies#index'
+# get 'users/:id/movies' => 'users#moviews', :as => :user_movies
 
 end
+
