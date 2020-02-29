@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
 
 
   
@@ -28,6 +28,7 @@ end
 
     if @movie.save
       redirect_to movie_path(@movie), notice: 'Movie was successfully created.'
+      
       
     else
       render :new

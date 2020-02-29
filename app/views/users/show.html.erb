@@ -1,0 +1,8 @@
+<h1> users show page </h1>
+<%= user_name %><br>
+
+<% @user_movies.each do |movie| %>
+<ul>
+<li><%= link_to movie.title, movie_path(movie) %></li>
+</ul>
+<% end %>

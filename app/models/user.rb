@@ -17,6 +17,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[github]
 
   validates :username, presence: true
+  #we bypassed strong params for devise so we need this for username
 
   
 
@@ -27,4 +28,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
+
+ 
 end
