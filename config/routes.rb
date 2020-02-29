@@ -6,8 +6,8 @@ resources :movies do
     collection do
         get 'search'
     end
-    resources :reviews
-# resources :reviews, except: [:show, :index]
+    resources :reviews, except: [:show, :index]
+
 end
 
 # resources :reviews
@@ -17,11 +17,11 @@ root 'movies#index'
 # get 'users/:id/movies' => 'users#moviews', :as => :user_movies
 
 
+resources :users, only: [:show]
+
 # resource :users, only: [:show] do
 #     resources :movies
 #   end
-
-resources :users, only: [:show]
 
 
 end

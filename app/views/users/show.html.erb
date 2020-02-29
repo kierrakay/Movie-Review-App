@@ -1,8 +1,16 @@
-<h1> users show page </h1>
-<%= user_name %><br>
+<h1> Movies <%= user_name %> Reviewed:  </h1>
 
-<% @user_movies.each do |movie| %>
-<ul>
-<li><%= link_to movie.title, movie_path(movie) %></li>
-</ul>
-<% end %>
+
+
+
+<div class="row">
+  <% @user_movies.each do |movie| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
+      </div>
+    </div>
+  <% end %>
+
+  
+</div>
