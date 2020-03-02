@@ -2,21 +2,25 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
-
-  # has_many :reviews
-  # has_many :reviewers, through: :reviews
   
-  # belongs_to :movies
+#   has_many :reviews, dependent: :destroy
+#   # deletes reviews when user cancels account
+# has_many :movies
 
-  has_many :reviews, dependent: :destroy
-  #deletes reviews when user cancels account
+has_many :reviews
+has_many :movies, through: :reviews
 
-  has_many :movies
+
+
+
+
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
 
   #we bypassed strong params for devise so we need this for username
 

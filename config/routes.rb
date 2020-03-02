@@ -23,6 +23,8 @@ resources :users, only: [:show]
 #     resources :movies
 #   end
 
+default_url_options :host => "example.com"
+#this is for when a user forgets password
 
 end
 

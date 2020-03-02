@@ -40,11 +40,14 @@
           <h3>No reviews just yet, would you like to add the first!</h3>
           <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-danger" %>
         <% else %>
+        
           <% @reviews.each do |review| %>
+       
             <div class="reviews">
             <p><%= review.rating %></p>
             <p><%= review.comment %></p>
-            <p><%= review.reviewer.username %>
+            <%# <p><%= review.reviewer.username %> %>
+            <p><%= review.user_id %> 
            
              <%= link_to '- Edit', edit_movie_review_path(@movie, review) %> 
              <%# <p><%= review.user.username%>
