@@ -42,11 +42,13 @@ end
   end
 
   def edit
-    if @movie.user_id == current_user.id
-      render 'edit'
-    else 
-      redirect_to movie_path(@movie)
-    end
+
+    # if @movie.user_id == current_user.id
+    # if @movie == current_user.id
+    #   render 'edit'
+    # else 
+    #   redirect_to movie_path(@movie)
+    # end
 
   end
 
@@ -70,6 +72,7 @@ end
 
   private 
   def set_movie
+  
     @movie = Movie.find(params[:id])
     # @movie = Movie.find_by(params[:id])  // find the post
     # unless current_user?(@movie.user)

@@ -47,7 +47,8 @@
             <p><%= review.rating %></p>
             <p><%= review.comment %></p>
             <%# <p><%= review.reviewer.username %> %>
-            <p><%= review.user_id %> 
+            <%# <p><%= review.user_id % > works for movies has reviewers code. %>
+              <p><%= review.user.username %> 
            
              <%= link_to '- Edit', edit_movie_review_path(@movie, review) %> 
              <%# <p><%= review.user.username%>
