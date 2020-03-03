@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, except: [:index]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
+  # before_action :authenticate_user!
 
 
   
@@ -43,12 +43,12 @@ end
 
   def edit
 
-    # if @movie.user_id == current_user.id
-    # if @movie == current_user.id
-    #   render 'edit'
-    # else 
-    #   redirect_to movie_path(@movie)
-    # end
+    if @movie.user_id == current_user.id
+    # if @movie.id == current_user.id
+      render 'edit'
+    else 
+      redirect_to movie_path(@movie)
+    end
 
   end
 
@@ -82,8 +82,8 @@ end
  
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image, user: current_user)
-    # do i need to add user_id here so itll stay?
+    params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image, :user_id )
+    # do i need to add user_id here so itll stay? ..... user: current_user attribute
     
   end
 

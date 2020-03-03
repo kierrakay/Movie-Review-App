@@ -3,7 +3,7 @@ class Movie < ApplicationRecord
 
     # has_many :reviews
     # has_many :reviewers, through: :reviews, dependent: :destroy
-    # belongs_to :user
+    belongs_to :user
 
 
     has_many :reviews

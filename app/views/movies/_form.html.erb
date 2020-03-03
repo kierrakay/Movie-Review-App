@@ -37,6 +37,9 @@
     <%= f.file_field :image %>
   </div>
   <div class="actions">
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%# #gives a movie a user_id so only the person who creates it can delete it %>
     <%= f.submit %>
     <%# will automatically give it a create or update button %>
   </div>
