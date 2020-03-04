@@ -20,7 +20,8 @@ has_many :movies, through: :reviews, dependent: :destroy
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, length: { in: 2..20 }
+  
 
   #we bypassed strong params for devise so we need this for username
 
