@@ -6,7 +6,7 @@ resources :movies do
     collection do
         get 'search'
     end
-    resources :reviews, except: [:show, :index]
+    resources :reviews, except: [:index]
 
 end
 

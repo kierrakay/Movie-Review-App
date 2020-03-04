@@ -50,7 +50,8 @@
             <%# <p><%= review.user_id % > works for movies has reviewers code. %>
               <p><%= review.user.username %> 
            
-             <%= link_to '- Edit', edit_movie_review_path(@movie, review) %> 
+             <%# <%= link_to '- Edit', edit_movie_review_path(@movie, review) %>  %>
+              <%= link_to '- Edit', movie_review_path(@movie, review) %> 
              <%# <p><%= review.user.username%>
       </div>
   
