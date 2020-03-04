@@ -3,5 +3,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', movie_path(@movie)%>
-<%= link_to "Delete", movie_review_path(@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+<%= link_to "Delete", movie_review_path(@movie, @review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+<%# <%= link_to "Delete", movie_review_path(@review), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %> %>
+<%# above wont allow you to delete updated review comment %>
 <%# goes back to the particular movie instance we were at %>

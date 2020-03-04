@@ -4,7 +4,7 @@
 
 
 <div class="row">
-  <% @user_movies.each do |movie| %>
+  <% @user_movies.uniq.each do |movie| %>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
         <%= link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
@@ -14,3 +14,5 @@
 
   
 </div>
+<%# #.uniq prevents duplicate movies on user show page  %>
+

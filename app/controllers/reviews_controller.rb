@@ -5,9 +5,10 @@ class ReviewsController < ApplicationController
   
 
  
-  def index
-@reviews = Review.all 
-  end
+#   def index
+# @reviews = Review.all 
+#   end
+# not being used 3/4/2020 we state that in our routes
 
   def new
     @review = Review.new
@@ -47,6 +48,7 @@ end
   def destroy
     @review.destroy
     redirect_to @movie
+    # redirect_to root_path
   end
 
   private
