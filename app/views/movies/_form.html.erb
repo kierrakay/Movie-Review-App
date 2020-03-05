@@ -1,4 +1,5 @@
 <%= form_for @movie, html: { multipart: true } do |f|%>
+  <div class="form-group">
 <%# this is for paperclip gem above %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
@@ -12,25 +13,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+ 
+  <%# <div class="field"> %>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
   </div>
   <div class="field">
     <%= f.label :movie_length %><br>
-    <%= f.text_field :movie_length %>
+    <%= f.text_field :movie_length, class: "form-control", placeholder: "Movie Length" %>
   </div>
   <div class="field">
     <%= f.label :director %><br>
-    <%= f.text_field :director %>
+    <%= f.text_field :director, class: "form-control", placeholder: "Director" %>
   </div>
   <div class="field">
     <%= f.label :movie_rating %><br>
-    <%= f.text_field :rating %>
+    <%= f.text_field :rating, class: "form-control", placeholder: "Rating" %>
   </div>
   <div class="field">
     <%= f.label :image %><br>

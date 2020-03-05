@@ -20,7 +20,7 @@ has_many :users, through: :reviews
     validates :rating, presence: true
     validates :image, presence: true
 
-    
+   
 	
 end
 

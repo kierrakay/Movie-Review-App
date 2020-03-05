@@ -1,4 +1,5 @@
 <%= form_for([@movie, @review]) do |f| %>
+  <div class="form-group">
 <%# ([@movie, @review]) for nested route %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +13,14 @@
     </div>
   <% end %>
 
+  <div class="field"> 
+    <h3><%= f.label :rating%><br></h3>
+    <%= f.number_field :rating, max: 5, min:1, class: "form-control" %>
+   </div>
+  
   <div class="field">
-    <div id="star-rating"></div>
-  </div>
-  <div class="field">
-    <%= f.label :rating%><br>
-    <%= f.number_field :rating %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
+    <h3><%= f.label :comment %><br></h3>
+    <%= f.text_area :comment, class: "form-control", placeholder: "Comment" %>
   </div>
   <div class="actions">
     <%= f.submit %>

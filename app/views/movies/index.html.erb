@@ -1,7 +1,8 @@
 <% if !user_signed_in? %>
+<%# if user isn't logged in they will see this filler on homepage %>
   <div class="jumbotron">
     <h1>Your Favorite Movies Reviewed</h1>
-    <p>this is a filler section ignore this mess. This is just here for when you are not logged in to alert you to sign up or log in before reviewing a movie. </p>
+    <p>Life is like a movie, create your own ending. Keep believing, keep pretending. Sign In or Sign Up to start reviewing! </p>
     <p><%= link_to "Sign Up To Write A Review", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
   </div>
 <% end %>

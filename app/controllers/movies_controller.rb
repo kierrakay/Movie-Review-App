@@ -1,18 +1,16 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
-  # before_action :authenticate_user!
-
-
   
 
-def search
-  if params[:search].present?
-    @movies = Movie.search(params[:search])
-  else
-    @movies = Movie.all
+  def search
+    if params[:search].present?
+      @movies = Movie.search(params[:search])
+    else
+ redirect_to movies_path
+    end
   end
-end
+
 
   def index
     @movies = Movie.all
@@ -22,15 +20,12 @@ end
     @movie = current_user.movies.build
   end
 
+
   def create
-
     @movie = current_user.movies.build(movie_params)
-
 
     if @movie.save
       redirect_to movie_path(@movie), notice: 'Movie was successfully created.'
-      
-      
     else
       render :new
     end
@@ -42,26 +37,25 @@ end
   end
 
   def edit
-
     if @movie.user_id == current_user.id
-    # if @movie.id == current_user.id
       render 'edit'
     else 
       redirect_to movie_path(@movie)
     end
-
   end
 
+
   def update
-    respond_to do |format|
+  
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
+       redirect_to @movie, notice: 'Movie was successfully updated.' 
       else
-        format.html { render :edit }
+       render :edit 
      
       end
     end
-  end
+
+
 
   def destroy
     @movie.destroy
@@ -69,10 +63,10 @@ end
   end
 
 
-
   private 
+
   def set_movie
-  
+
     @movie = Movie.find(params[:id])
     # @movie = Movie.find_by(params[:id])  // find the post
     # unless current_user?(@movie.user)

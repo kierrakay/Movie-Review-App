@@ -7,13 +7,14 @@
           <table class="table">
             <tbody>
             
-              <tr>
+              <%# <tr>
                 <td><strong>Title:</strong></td>
-                <td><%= @movie.title %></td>
-              </tr>
-              <tr>
+                <td><%= @movie.title % >< /td>
+              </ tr> %>
+              <%# <tr>
                 <td><strong>Description:</strong></td>
-                <td><%= @movie.description %></td>
+                <td colspan="2"><%= @movie.description % ></ td> %>
+               
               </tr>
               <tr>
                 <td><strong>Movie length:</strong></td>
@@ -29,7 +30,7 @@
               </tr>
             </tbody>
           </table>
-          <%= link_to "Write A Review", new_movie_review_path(@movie) %>
+          <%= link_to "Write A Review", new_movie_review_path(@movie), class: "btn btn-danger"  %>
         </div>
       </div>
       <div class="col-md-7 col-md-offset-1">
@@ -44,15 +45,22 @@
           <% @reviews.each do |review| %>
        
             <div class="reviews">
-            <p><%= review.rating %></p>
-            <p><%= review.comment %></p>
-            <%# <p><%= review.reviewer.username %> %>
-            <%# <p><%= review.user_id % > works for movies has reviewers code. %>
-              <p><%= review.user.username %> 
-           
-             <%# <%= link_to '- Edit', edit_movie_review_path(@movie, review) %>  %>
-              <%= link_to '- Edit', movie_review_path(@movie, review) %> 
-             <%# <p><%= review.user.username%>
+             <%# < p > Rating: < % = review.rating % > stars closing </p > %>
+             <% review.rating.to_i.times do  %>
+            <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+            <% review.blank_stars.to_i.times do %>
+           <span class="glyphicon glyphicon-star-empty"></span>
+              <% end %>
+              <%# Bootstrap has built in glyphicons that can help us accomplish this.%>
+
+            <h3><p>"<%= review.comment %>"</p></h3>
+              <%# <p><%= review.user.username %>  
+              <h5>Posted by: <%= link_to "#{review.user.username}", movie_review_path(@movie, review) %></h5>
+             <%# <%= link_to '- Edit', edit_movie_review_path(@movie, review) %> 
+             <%# above takes us straight to edit form %>
+              <%# <%= link_to 'edit', movie_review_path(@movie, review) %> 
+           <%# above takes us to reviews nested show page %>
       </div>
   
       <% end %>
@@ -61,5 +69,6 @@
   </div>
 
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+
+<%= link_to 'Edit', edit_movie_path(@movie), class: "btn btn-info"  %>
+<%= link_to 'Back', movies_path, class: "btn btn-info"  %>
